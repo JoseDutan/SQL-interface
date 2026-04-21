@@ -1,0 +1,17 @@
+import type { Topic } from '../../domain/models/Topic';
+
+interface TopicCardProps {
+  topic: Topic;
+}
+
+/**
+ * Tarjeta de tema para la vista de sección (estilo alineado con el fondo animado).
+ */
+export function TopicCard({ topic }: TopicCardProps) {
+  return (
+    <div className="rounded-xl border border-slate-200 bg-white/90 p-6 shadow-sm backdrop-blur-sm">
+      <h4 className="text-lg font-semibold text-slate-800">{topic.title}</h4>
+      <p className="mt-1 text-sm text-slate-500">{topic.description}</p>
+    </div>
+  );
+}
