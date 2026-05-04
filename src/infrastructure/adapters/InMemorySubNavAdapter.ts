@@ -4,11 +4,11 @@ import type { SubNavPort } from '../../domain/ports/SubNavPort';
 
 const BY_SECTION: Record<SectionId, SubNavItem[]> = {
   curso: [
-    { id: 'c1', label: 'Fundamentos del modelo relacional' },
-    { id: 'c2', label: 'DDL: creación de tablas e índices' },
-    { id: 'c3', label: 'Consultas con SELECT y filtros' },
-    { id: 'c4', label: 'JOINs y relaciones entre tablas' },
-    { id: 'c5', label: 'Subconsultas y vistas' },
+    { id: 'c1', label: 'Lenguaje de Definición y Control de Datos' },
+    { id: 'c2', label: 'Lenguaje de Manipulación de Datos' },
+    { id: 'c3', label: 'Lenguaje de Consulta de Datos – Nivel Básico' },
+    { id: 'c4', label: 'Lenguaje de Consulta de Datos – Nivel Avanzado' },
+    { id: 'c5', label: 'Lenguaje de Consulta de Datos – Uniones, Filtros y Vistas' },
   ],
   actividad: [
     { id: 'a1', label: 'Laboratorio: SELECT básico' },

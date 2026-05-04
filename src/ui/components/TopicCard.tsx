@@ -12,6 +12,11 @@ export function TopicCard({ topic }: TopicCardProps) {
     <div className="rounded-xl border border-slate-200 bg-white/90 p-6 shadow-sm backdrop-blur-sm">
       <h4 className="text-lg font-semibold text-slate-800">{topic.title}</h4>
       <p className="mt-1 text-sm text-slate-500">{topic.description}</p>
+      {topic.content ? (
+        <div className="mt-5 border-t border-slate-200/80 pt-5 text-sm leading-relaxed text-slate-700 whitespace-pre-line">
+          {topic.content}
+        </div>
+      ) : null}
     </div>
   );
 }

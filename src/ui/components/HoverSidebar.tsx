@@ -4,11 +4,12 @@ import { FadeInUp } from './FadeInUp';
 
 interface HoverSidebarProps {
   items: SubNavItem[];
+  activeId: string | null;
+  onActiveIdChange: (id: string) => void;
 }
 
-export function HoverSidebar({ items }: HoverSidebarProps) {
+export function HoverSidebar({ items, activeId, onActiveIdChange }: HoverSidebarProps) {
   const [open, setOpen] = useState(false);
-  const [activeId, setActiveId] = useState<string | null>(() => items[0]?.id ?? null);
 
   return (
     <div
@@ -45,7 +46,7 @@ export function HoverSidebar({ items }: HoverSidebarProps) {
                 <FadeInUp key={item.id} delayMs={90 + index * 55}>
                   <button
                     type="button"
-                    onClick={() => setActiveId(item.id)}
+                    onClick={() => onActiveIdChange(item.id)}
                     className={`group flex w-full items-start gap-3 rounded-xl border px-3 py-2.5 text-left text-sm transition-all duration-300 cursor-pointer hover:-translate-y-1 hover:shadow-lg ${
                       isActive
                         ? 'border-cyan-500/40 bg-cyan-500/10 text-cyan-100 shadow-[0_0_0_1px_rgba(34,211,238,0.12)] hover:border-cyan-400/70 hover:shadow-cyan-500/15'

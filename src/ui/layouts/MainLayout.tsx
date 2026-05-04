@@ -1,4 +1,11 @@
-import type { ReactNode } from 'react';
+import {
+  cloneElement,
+  isValidElement,
+  useEffect,
+  useState,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
 import type { Section, SectionId } from '../../domain/models/Section';
 import { Header } from '../components/Header';
 import { HoverSidebar } from '../components/HoverSidebar';
@@ -20,6 +27,16 @@ export function MainLayout({
   onNavigateToDashboard,
 }: MainLayoutProps) {
   const subNavItems = useSubNav(activeSection);
+  const [activeSubNavId, setActiveSubNavId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setActiveSubNavId(subNavItems[0]?.id ?? null);
+  }, [activeSection, subNavItems]);
+
+  const sectionPageProps =
+    activeSection != null && isValidElement(children)
+      ? { sectionId: activeSection, activeSubNavId }
+      : {};
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -30,9 +47,18 @@ export function MainLayout({
         onNavigateToDashboard={onNavigateToDashboard}
       />
       {activeSection && (
-        <HoverSidebar key={activeSection} items={subNavItems} />
+        <HoverSidebar
+          key={activeSection}
+          items={subNavItems}
+          activeId={activeSubNavId}
+          onActiveIdChange={setActiveSubNavId}
+        />
       )}
-      <main className="flex flex-1 flex-col">{children}</main>
+      <main className="flex flex-1 flex-col">
+        {isValidElement(children)
+          ? cloneElement(children as ReactElement<Record<string, unknown>>, sectionPageProps)
+          : children}
+      </main>
     </div>
   );
 }

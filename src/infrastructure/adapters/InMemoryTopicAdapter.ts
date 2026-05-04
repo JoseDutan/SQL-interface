@@ -2,54 +2,84 @@ import type { Topic } from '../../domain/models/Topic';
 import type { TopicPort } from '../../domain/ports/TopicPort';
 
 const TOPICS: Topic[] = [
-  // Curso
+  // Curso (ids alineados con subnavegación c1–c5)
   {
-    id: 'curso-1',
+    id: 'c1',
     sectionId: 'curso',
-    title: 'Introducción a SQL',
-    description: 'Conoce qué es SQL y por qué es fundamental en bases de datos.',
-    content:
-      'SQL (Structured Query Language) es el lenguaje estándar para gestionar bases de datos relacionales. Permite crear, leer, actualizar y eliminar datos de forma eficiente.',
+    title: 'Lenguaje de Definición y Control de Datos',
+    description: 'DDL y DCL: definición de objetos y permisos en el servidor de datos.',
+    content: `Data Definition Language (DDL)
+CREATE
+ALTER
+DROP
+TRUNCATE
+
+Data Control Language (DCL)
+GRANT
+REVOKE`,
   },
   {
-    id: 'curso-2',
+    id: 'c2',
     sectionId: 'curso',
-    title: 'SELECT - Consultas básicas',
-    description: 'Aprende a extraer datos de una tabla con SELECT.',
-    content:
-      'La sentencia SELECT se utiliza para seleccionar datos de una base de datos. Ejemplo: SELECT nombre, edad FROM estudiantes;',
+    title: 'Lenguaje de Manipulación de Datos',
+    description: 'DML: inserción, actualización y eliminación de filas.',
+    content: `Data Manipulation Language (DML)
+INSERT
+UPDATE
+DELETE`,
   },
   {
-    id: 'curso-3',
+    id: 'c3',
     sectionId: 'curso',
-    title: 'WHERE - Filtrar resultados',
-    description: 'Filtra registros usando condiciones con WHERE.',
-    content:
-      'WHERE se usa para filtrar registros que cumplen una condición. Ejemplo: SELECT * FROM estudiantes WHERE edad > 20;',
+    title: 'Lenguaje de Consulta de Datos – Nivel Básico',
+    description: 'DQL: SELECT, FROM, WHERE y fundamentos del listado de datos.',
+    content: `Data Query Language (DQL)
+SELECT
+FROM
+WHERE
+
+Comandos básicos del SELECT
+Comodín universal (*)
+Columnas específicas
+AS
+Operadores matemáticos (+, -, *, /)`,
   },
   {
-    id: 'curso-4',
+    id: 'c4',
     sectionId: 'curso',
-    title: 'INSERT INTO - Insertar datos',
-    description: 'Aprende a agregar nuevos registros a una tabla.',
-    content:
-      'INSERT INTO permite agregar filas. Ejemplo: INSERT INTO estudiantes (nombre, edad) VALUES (\'Ana\', 22);',
+    title: 'Lenguaje de Consulta de Datos – Nivel Avanzado',
+    description: 'Extensión de DQL: orden, agrupación, límites y funciones en consultas.',
+    content: `Extensión de DQL
+ORDER BY
+GROUP BY
+LIMIT
+
+Funciones y operaciones en SELECT
+Manipulación de texto: CONCAT, UPPER, LOWER, SUBSTRING
+Condicional: CASE WHEN
+Funciones de fecha: CURRENTDAY, NOW, DATEDIFF, AGE
+Funciones de agregación: COUNT, SUM, AVG, MAX, MIN`,
   },
   {
-    id: 'curso-5',
+    id: 'c5',
     sectionId: 'curso',
-    title: 'UPDATE - Actualizar datos',
-    description: 'Modifica registros existentes en una tabla.',
-    content:
-      'UPDATE modifica datos existentes. Ejemplo: UPDATE estudiantes SET edad = 23 WHERE nombre = \'Ana\';',
-  },
-  {
-    id: 'curso-6',
-    sectionId: 'curso',
-    title: 'DELETE - Eliminar registros',
-    description: 'Elimina registros de una tabla de forma segura.',
-    content:
-      'DELETE elimina filas. Ejemplo: DELETE FROM estudiantes WHERE nombre = \'Ana\'; Siempre usa WHERE para evitar borrar todo.',
+    title: 'Lenguaje de Consulta de Datos – Uniones, Filtros y Vistas',
+    description: 'FROM con uniones, WHERE avanzado y vistas con CREATE VIEW.',
+    content: `Comandos del FROM (relación de tablas)
+JOIN
+INNER JOIN
+FULL OUTER JOIN
+UNION
+UNION ALL
+
+Comandos del WHERE (filtros avanzados)
+Operadores de comparación: =, <, >, !=
+Operadores lógicos: AND, OR, NOT
+Operadores de rango: BETWEEN, IN
+Operadores de patrones: LIKE (%, _)
+
+Vistas
+CREATE VIEW`,
   },
   // Actividades
   {
