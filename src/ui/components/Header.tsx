@@ -1,4 +1,7 @@
 import type { Section, SectionId } from '../../domain/models/Section';
+import { BrandMark } from './BrandMark';
+import { NavIconHome, SectionNavIcon } from './NavOutlineIcons';
+import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
   sections: Section[];
@@ -11,6 +14,11 @@ interface HeaderProps {
   onModuleSubNavTriggerClick?: () => void;
 }
 
+const navInactive =
+  'text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white';
+const navActive =
+  'bg-blue-50 font-semibold text-blue-700 shadow-sm ring-1 ring-blue-100/90 dark:bg-blue-950/45 dark:text-blue-300 dark:ring-blue-800/60';
+
 export function Header({
   sections,
   activeSection,
@@ -21,12 +29,12 @@ export function Header({
   onModuleSubNavTriggerClick,
 }: HeaderProps) {
   return (
-    <header className="fixed inset-x-0 top-0 z-[50] flex h-16 min-w-0 shrink-0 items-center border-b border-slate-800/80 bg-slate-900 px-3 text-white shadow-sm shadow-black/20 sm:px-5 md:gap-4 md:px-8">
+    <header className="fixed inset-x-0 top-0 z-[50] flex h-16 min-w-0 shrink-0 items-center gap-2 border-b border-slate-200/90 bg-white/95 px-3 text-slate-800 shadow-sm shadow-slate-200/30 backdrop-blur-md dark:border-slate-700/90 dark:bg-slate-900/95 dark:text-slate-100 dark:shadow-black/30 sm:px-5 md:gap-3 md:px-8">
       <div className="relative z-20 flex shrink-0 items-center gap-1.5">
         {showModuleSubNavTrigger ? (
           <button
             type="button"
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-300 transition-colors hover:bg-slate-800 hover:text-white focus:outline-none focus:ring-2 focus:ring-cyan-400 md:hidden"
+            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-white md:hidden"
             onClick={onModuleSubNavTriggerClick}
             aria-expanded={moduleSubNavOpen}
             aria-controls="module-subnav"
@@ -43,55 +51,55 @@ export function Header({
             )}
           </button>
         ) : null}
+        <BrandMark
+          size="sm"
+          onClick={onNavigateToDashboard}
+          className="hidden md:inline-flex"
+          aria-label="Ir al inicio"
+        />
+      </div>
+
+      <nav
+        className="flex min-w-0 flex-1 items-center justify-center gap-0.5 overflow-x-auto px-1 md:gap-1.5 md:px-2"
+        aria-label="Secciones del curso"
+      >
         <button
           type="button"
           onClick={onNavigateToDashboard}
-          className="hidden shrink-0 rounded-lg px-4 py-2 text-sm font-semibold text-cyan-400 transition-colors hover:bg-slate-800 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 md:inline-flex"
+          className={`flex shrink-0 items-center gap-1.5 rounded-lg px-2 py-2 text-[11px] font-medium transition-colors sm:px-2.5 sm:text-xs md:px-3 md:text-sm ${navInactive}`}
         >
-          SQL
+          <NavIconHome className="size-[18px] shrink-0 sm:size-5" />
+          <span className="hidden sm:inline">Inicio</span>
+        </button>
+        {sections.map((section) => {
+          const isActive = activeSection === section.id;
+          return (
+            <button
+              key={section.id}
+              type="button"
+              onClick={() => onNavigate(section.id)}
+              className={`flex min-h-0 min-w-0 shrink-0 items-center gap-1.5 rounded-lg px-2 py-2 text-[11px] font-medium leading-tight transition-colors sm:px-2.5 sm:text-xs md:px-3 md:text-sm ${
+                isActive ? navActive : navInactive
+              }`}
+            >
+              <SectionNavIcon sectionId={section.id} className="size-[18px] shrink-0 sm:size-5" />
+              <span className="max-w-[5.5rem] truncate sm:max-w-none md:whitespace-nowrap">{section.title}</span>
+            </button>
+          );
+        })}
+      </nav>
+
+      <div className="relative z-20 flex shrink-0 items-center gap-0.5">
+        <ThemeToggle />
+        <button
+          type="button"
+          onClick={onNavigateToDashboard}
+          className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-cyan-600 transition-colors hover:bg-cyan-50 focus:outline-none focus:ring-2 focus:ring-cyan-500 dark:text-cyan-400 dark:hover:bg-slate-800 md:hidden"
+          aria-label="Ir al panel principal"
+        >
+          <NavIconHome className="size-[22px]" />
         </button>
       </div>
-
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center md:pointer-events-auto md:static md:inset-auto md:min-w-0 md:flex-1">
-        <nav
-          className="pointer-events-auto flex w-full max-w-[calc(100%-5.75rem)] items-center justify-center gap-0.5 overflow-x-hidden md:max-w-none md:gap-2"
-          aria-label="Secciones del curso"
-        >
-          {sections.map((section) => {
-            const isActive = activeSection === section.id;
-            return (
-              <button
-                key={section.id}
-                type="button"
-                onClick={() => onNavigate(section.id)}
-                className={`flex min-h-0 min-w-0 flex-1 basis-0 items-center justify-center rounded-lg px-0.5 py-2 text-[11px] font-medium leading-tight transition-colors sm:px-1 sm:text-xs md:flex-none md:basis-auto md:px-4 md:text-sm ${
-                  isActive
-                    ? 'bg-cyan-600/20 text-cyan-400'
-                    : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                }`}
-              >
-                <span className="inline-flex min-w-0 max-w-full items-center gap-px md:gap-2">
-                  <span className="flex shrink-0 items-center justify-center [&>svg]:size-3.5 sm:[&>svg]:size-4 md:[&>svg]:size-[1.125rem]">
-                    {section.icon}
-                  </span>
-                  <span className="min-w-0 truncate md:whitespace-nowrap">{section.title}</span>
-                </span>
-              </button>
-            );
-          })}
-        </nav>
-      </div>
-
-      <button
-        type="button"
-        onClick={onNavigateToDashboard}
-        className="relative z-20 ml-auto flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-cyan-400 transition-colors hover:bg-slate-800 hover:text-cyan-300 focus:outline-none focus:ring-2 focus:ring-cyan-400 md:hidden"
-        aria-label="Ir al panel principal"
-      >
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-          <path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1V9.5z" />
-        </svg>
-      </button>
     </header>
   );
 }

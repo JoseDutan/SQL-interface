@@ -11,6 +11,8 @@ import { Header } from '../components/Header';
 import { FixedSidebar } from '../components/FixedSidebar';
 import { useSubNav } from '../hooks/useSubNav';
 
+const SIDEBAR_COLLAPSED_KEY = 'sql-interface-sidebar-collapsed';
+
 interface MainLayoutProps {
   children: ReactNode;
   sections: Section[];
@@ -29,10 +31,30 @@ export function MainLayout({
   const subNavItems = useSubNav(activeSection);
   const [activeSubNavId, setActiveSubNavId] = useState<string | null>(null);
   const [mobileSubNavOpen, setMobileSubNavOpen] = useState(false);
+  const [sidebarDesktopCollapsed, setSidebarDesktopCollapsed] = useState(false);
+  const [sidebarPrefsHydrated, setSidebarPrefsHydrated] = useState(false);
 
   useEffect(() => {
     setActiveSubNavId(subNavItems[0]?.id ?? null);
   }, [activeSection, subNavItems]);
+
+  useEffect(() => {
+    try {
+      setSidebarDesktopCollapsed(localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === '1');
+    } catch {
+      /* ignore */
+    }
+    setSidebarPrefsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (!sidebarPrefsHydrated) return;
+    try {
+      localStorage.setItem(SIDEBAR_COLLAPSED_KEY, sidebarDesktopCollapsed ? '1' : '0');
+    } catch {
+      /* ignore */
+    }
+  }, [sidebarDesktopCollapsed, sidebarPrefsHydrated]);
 
   useEffect(() => {
     if (!mobileSubNavOpen) return;
@@ -81,6 +103,9 @@ export function MainLayout({
       ? { sectionId: activeSection, activeSubNavId }
       : {};
 
+  const showSidebar = Boolean(activeSection);
+  const mainPadMd = showSidebar ? (sidebarDesktopCollapsed ? 'md:pl-6' : 'md:pl-72') : '';
+
   return (
     <div className="flex min-h-screen flex-col">
       <Header
@@ -92,7 +117,7 @@ export function MainLayout({
         moduleSubNavOpen={mobileSubNavOpen}
         onModuleSubNavTriggerClick={() => setMobileSubNavOpen((o) => !o)}
       />
-      {activeSection && (
+      {showSidebar ? (
         <FixedSidebar
           key={activeSection}
           items={subNavItems}
@@ -100,10 +125,37 @@ export function MainLayout({
           onActiveIdChange={handleSubNavChange}
           mobileOpen={mobileSubNavOpen}
           onMobileOpenChange={setMobileSubNavOpen}
+          desktopCollapsed={sidebarDesktopCollapsed}
         />
-      )}
+      ) : null}
+
+      {showSidebar ? (
+        <button
+          type="button"
+          onClick={() => setSidebarDesktopCollapsed((c) => !c)}
+          className={`fixed z-[48] hidden h-10 w-10 items-center justify-center rounded-full border border-slate-200/95 bg-white text-slate-600 shadow-lg shadow-slate-300/40 transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-cyan-300 hover:text-cyan-600 hover:shadow-cyan-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 dark:shadow-black/40 dark:hover:border-cyan-600 dark:hover:text-cyan-300 md:flex top-[5.25rem] ${
+            sidebarDesktopCollapsed ? 'left-3' : 'left-[calc(18rem-1.25rem)]'
+          }`}
+          aria-expanded={!sidebarDesktopCollapsed}
+          aria-controls="module-subnav"
+          aria-label={
+            sidebarDesktopCollapsed ? 'Mostrar navegación de contenidos' : 'Ocultar navegación de contenidos'
+          }
+        >
+          {sidebarDesktopCollapsed ? (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+              <path d="M9 18l6-6-6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          ) : (
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden>
+              <path d="M15 18l-6-6 6-6" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          )}
+        </button>
+      ) : null}
+
       <main
-        className={`flex min-h-0 flex-1 flex-col pt-16 ${activeSection ? 'md:pl-72' : ''}`}
+        className={`flex min-h-0 flex-1 flex-col pt-16 transition-[padding] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${mainPadMd}`}
       >
         {isValidElement(children)
           ? cloneElement(children as ReactElement<Record<string, unknown>>, sectionPageProps)

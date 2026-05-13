@@ -276,7 +276,7 @@ function buildShuffledRounds(): GameRound[] {
 function tagStyles(tag: GameRound['tag']) {
   switch (tag) {
     case 'INSERT':
-      return 'bg-gradient-to-r from-teal-500 to-emerald-500 text-white shadow-lg shadow-teal-600/40 ring-2 ring-white/30';
+      return 'bg-gradient-to-r from-cyan-500 to-emerald-500 text-white shadow-lg shadow-cyan-600/40 ring-2 ring-white/30';
     case 'UPDATE':
       return 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-sky-600/35 ring-2 ring-white/30';
     case 'DELETE':
@@ -326,28 +326,28 @@ export function DmlPracticeGame() {
   if (finished) {
     const pct = Math.round((score / totalRounds) * 100);
     const tier =
-      pct >= 80 ? { emoji: '🏆', gradient: 'from-emerald-400 via-teal-400 to-cyan-400' } : pct >= 50
+      pct >= 80 ? { emoji: '🏆', gradient: 'from-emerald-400 via-cyan-400 to-cyan-400' } : pct >= 50
         ? { emoji: '⚡', gradient: 'from-amber-400 via-orange-400 to-rose-400' }
-        : { emoji: '📚', gradient: 'from-violet-400 via-fuchsia-400 to-pink-400' };
+        : { emoji: '📚', gradient: 'from-sky-400 via-cyan-400 to-cyan-600' };
 
     return (
-      <div className="relative overflow-hidden rounded-2xl border-2 border-teal-300/60 bg-gradient-to-br from-slate-900 via-slate-900 to-teal-950 p-8 shadow-[0_0_60px_-12px_rgba(45,212,191,0.55)] sm:p-10">
-        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-teal-400/25 blur-3xl" aria-hidden />
+      <div className="relative overflow-hidden rounded-2xl border-2 border-cyan-300/60 bg-gradient-to-br from-[#0a192f] via-[#0f172a] to-[#112240] p-8 shadow-[0_0_60px_-12px_rgba(8,145,178,0.45)] sm:p-10">
+        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-400/25 blur-3xl" aria-hidden />
         <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" aria-hidden />
         <div className="relative text-center">
           <span className="text-5xl drop-shadow-lg sm:text-6xl" aria-hidden>
             {tier.emoji}
           </span>
-          <h3 className="mt-4 bg-gradient-to-r from-white via-teal-100 to-cyan-200 bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl">
+          <h3 className="mt-4 bg-gradient-to-r from-white via-cyan-100 to-cyan-200 bg-clip-text text-2xl font-bold tracking-tight text-transparent sm:text-3xl">
             ¡Laboratorio completado!
           </h3>
-          <p className="mt-2 text-sm font-medium text-teal-200/90">Resultado del desafío DML</p>
+          <p className="mt-2 text-sm font-medium text-cyan-200/90">Resultado del desafío DML</p>
           <div className="mx-auto mt-6 flex max-w-xs flex-col items-center gap-1 rounded-2xl border border-white/10 bg-white/5 px-6 py-5 backdrop-blur-sm">
             <span className={`bg-gradient-to-r ${tier.gradient} bg-clip-text text-5xl font-black tabular-nums text-transparent sm:text-6xl`}>
               {pct}%
             </span>
             <span className="text-sm text-slate-300">
-              <span className="font-semibold text-teal-300">{score}</span> de {totalRounds} retos acertados
+              <span className="font-semibold text-cyan-300">{score}</span> de {totalRounds} retos acertados
             </span>
           </div>
           <p className="mx-auto mt-6 max-w-xl text-sm leading-relaxed text-slate-300">
@@ -361,7 +361,7 @@ export function DmlPracticeGame() {
             <button
               type="button"
               onClick={reset}
-              className="rounded-xl bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 bg-[length:200%_100%] px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-slate-950 shadow-[0_8px_30px_-6px_rgba(45,212,191,0.65)] transition-[background-position,transform] duration-300 hover:bg-right hover:shadow-[0_12px_40px_-8px_rgba(34,211,238,0.55)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 active:scale-[0.98]"
+              className="rounded-xl bg-gradient-to-r from-cyan-500 via-cyan-500 to-cyan-500 bg-[length:200%_100%] px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-slate-950 shadow-[0_8px_30px_-6px_rgba(45,212,191,0.65)] transition-[background-position,transform] duration-300 hover:bg-right hover:shadow-[0_12px_40px_-8px_rgba(34,211,238,0.55)] focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 active:scale-[0.98]"
             >
               Volver a jugar
             </button>
@@ -372,22 +372,22 @@ export function DmlPracticeGame() {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border-2 border-teal-400/40 bg-gradient-to-br from-teal-50/95 via-white to-violet-50/80 p-[2px] shadow-[0_24px_60px_-12px_rgba(13,148,136,0.35)]">
+    <div className="relative overflow-hidden rounded-2xl border-2 border-cyan-400/40 bg-gradient-to-br from-cyan-50/95 via-white to-sky-50/80 p-[2px] shadow-[0_24px_60px_-12px_rgba(13,148,136,0.35)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(45,212,191,0.22),transparent)]" aria-hidden />
       <div className="pointer-events-none absolute -right-24 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-cyan-400/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -left-20 bottom-0 h-40 w-40 rounded-full bg-violet-400/15 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -left-20 bottom-0 h-40 w-40 rounded-full bg-sky-400/15 blur-3xl" aria-hidden />
 
       <div className="relative rounded-[14px] bg-white/90 p-5 backdrop-blur-md sm:p-7">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="space-y-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-teal-200/80 bg-gradient-to-r from-teal-500/15 to-cyan-500/15 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-teal-800 shadow-sm">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-200/80 bg-gradient-to-r from-cyan-500/15 to-cyan-500/15 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-800 shadow-sm">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-teal-400 opacity-60" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-teal-500" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-500" />
               </span>
               Modo interactivo
             </span>
-            <h3 className="bg-gradient-to-r from-teal-700 via-cyan-700 to-violet-700 bg-clip-text text-xl font-bold tracking-tight text-transparent sm:text-2xl">
+            <h3 className="bg-gradient-to-r from-cyan-700 via-cyan-700 to-sky-700 bg-clip-text text-xl font-bold tracking-tight text-transparent sm:text-2xl">
               Laboratorio DML en contexto
             </h3>
             <p className="max-w-xl text-xs leading-relaxed text-slate-600 sm:text-sm">
@@ -413,15 +413,8 @@ export function DmlPracticeGame() {
           </div>
         </div>
 
-        <div className="mt-5 overflow-hidden rounded-full border border-slate-200/80 bg-slate-200/90 p-1 shadow-inner" aria-hidden>
-          <div
-            className="h-2.5 rounded-full bg-gradient-to-r from-teal-500 via-cyan-400 to-emerald-400 shadow-[0_0_14px_rgba(34,211,238,0.55)] transition-[width] duration-500 ease-out"
-            style={{ width: `${Math.min(100, ((roundIndex + (pickedId ? 0.35 : 0)) / totalRounds) * 100)}%` }}
-          />
-        </div>
-
         <div className="relative mt-6 overflow-hidden rounded-xl border-2 border-slate-800/10 bg-gradient-to-br from-slate-900 to-slate-800 p-5 text-slate-100 shadow-xl shadow-slate-900/30">
-          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-teal-400 via-cyan-400 to-violet-500" aria-hidden />
+          <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-400 via-cyan-400 to-sky-500" aria-hidden />
           <div className="pl-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className={`rounded-lg px-2.5 py-1 font-mono text-[10px] font-bold uppercase tracking-wide ${tagStyles(round.tag)}`}>
@@ -448,10 +441,10 @@ export function DmlPracticeGame() {
             const letter = String.fromCharCode(65 + optIndex);
 
             let card =
-              'border-2 border-slate-200/90 bg-white shadow-md shadow-slate-300/30 hover:-translate-y-1 hover:border-teal-400/70 hover:shadow-lg hover:shadow-teal-500/20';
+              'border-2 border-slate-200/90 bg-white shadow-md shadow-slate-300/30 hover:-translate-y-1 hover:border-cyan-400/70 hover:shadow-lg hover:shadow-cyan-500/20';
             if (showResult && opt.correct) {
               card =
-                'border-2 border-emerald-500 bg-gradient-to-br from-emerald-50 to-teal-50 shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400/50';
+                'border-2 border-emerald-500 bg-gradient-to-br from-emerald-50 to-cyan-50 shadow-lg shadow-emerald-500/30 ring-2 ring-emerald-400/50';
             } else if (isWrongPick) {
               card =
                 'border-2 border-rose-500 bg-gradient-to-br from-rose-50 to-orange-50 shadow-lg shadow-rose-500/25 ring-2 ring-rose-400/40';
@@ -463,7 +456,7 @@ export function DmlPracticeGame() {
                 type="button"
                 disabled={pickedId !== null}
                 onClick={() => pickOption(opt)}
-                className={`group relative flex flex-col rounded-xl p-4 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-500 focus-visible:ring-offset-2 disabled:cursor-default ${card}`}
+                className={`group relative flex flex-col rounded-xl p-4 text-left transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 disabled:cursor-default ${card}`}
               >
                 <div className="flex items-start gap-3">
                   <span
@@ -472,7 +465,7 @@ export function DmlPracticeGame() {
                         ? 'bg-emerald-600 text-white'
                         : isWrongPick
                           ? 'bg-rose-600 text-white'
-                          : 'bg-gradient-to-br from-slate-800 to-slate-900 text-teal-300 shadow-md group-hover:from-teal-600 group-hover:to-cyan-700 group-hover:text-white'
+                          : 'bg-gradient-to-br from-slate-800 to-slate-900 text-cyan-300 shadow-md group-hover:from-cyan-600 group-hover:to-cyan-700 group-hover:text-white'
                     }`}
                   >
                     {letter}
@@ -509,7 +502,7 @@ export function DmlPracticeGame() {
             <button
               type="button"
               onClick={goNext}
-              className="rounded-xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-slate-900/40 transition hover:shadow-xl hover:shadow-teal-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-teal-400 focus-visible:ring-offset-2 active:scale-[0.98] sm:ml-auto"
+              className="rounded-xl bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 px-6 py-3 text-sm font-bold text-white shadow-lg shadow-slate-900/40 transition hover:shadow-xl hover:shadow-cyan-500/20 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 active:scale-[0.98] sm:ml-auto"
             >
               {roundIndex >= totalRounds - 1 ? '✨ Ver resultado' : 'Siguiente reto →'}
             </button>

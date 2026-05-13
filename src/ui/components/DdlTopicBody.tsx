@@ -16,14 +16,14 @@ function DdlSection({
   example: string;
 }) {
   return (
-    <section className="h-full rounded-lg border border-slate-200/90 bg-slate-50/80 p-5 shadow-sm">
+    <section className="h-full rounded-xl border border-slate-200/90 bg-white p-5 shadow-sm shadow-slate-200/40 dark:border-slate-600 dark:bg-slate-900/95 dark:shadow-none">
       <div className="flex flex-wrap items-baseline gap-2">
-        <span className="rounded-md bg-indigo-600 px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide text-white">
+        <span className="rounded-md bg-cyan-600 px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide text-white">
           {command}
         </span>
-        <h5 className="text-base font-semibold text-slate-800">{title}</h5>
+        <h5 className="text-base font-semibold text-slate-800 dark:text-slate-100">{title}</h5>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-slate-600">{definition}</p>
+      <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{definition}</p>
       <SqlWorkbenchBlock>{example}</SqlWorkbenchBlock>
     </section>
   );
@@ -39,26 +39,26 @@ function DclSection({
   definition: string;
 }) {
   return (
-    <section className="h-full rounded-lg border border-slate-200/90 bg-slate-50/80 p-5 shadow-sm">
+    <section className="h-full rounded-xl border border-slate-200/90 bg-white p-5 shadow-sm shadow-slate-200/40 dark:border-slate-600 dark:bg-slate-900/95 dark:shadow-none">
       <div className="flex flex-wrap items-baseline gap-2">
-        <span className="rounded-md bg-violet-700 px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide text-white">
+        <span className="rounded-md bg-slate-700 px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide text-white">
           {command}
         </span>
-        <h5 className="text-base font-semibold text-slate-800">{title}</h5>
+        <h5 className="text-base font-semibold text-slate-800 dark:text-slate-100">{title}</h5>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-slate-600">{definition}</p>
+      <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{definition}</p>
     </section>
   );
 }
 
 export function DdlTopicBody() {
   return (
-    <div className="mt-5 space-y-8 border-t border-slate-200/80 pt-6">
+    <div className="space-y-8">
       <header className="space-y-2">
-        <h4 className="text-sm font-semibold uppercase tracking-wide text-indigo-700">
+        <h4 className="text-sm font-semibold uppercase tracking-wide text-cyan-800">
           Data Definition Language (DDL)
         </h4>
-        <p className="text-sm leading-relaxed text-slate-700">
+        <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           El <strong className="font-semibold text-slate-800">DDL</strong> es el subconjunto de SQL
           dedicado a definir y modificar la <strong className="font-semibold text-slate-800">estructura</strong>{' '}
           de la base de datos: tablas, índices, vistas u otros objetos. No opera sobre filas concretas
@@ -144,10 +144,10 @@ TRUNCATE TABLE cliente;
 
       <div className="border-t border-slate-200/80 pt-8">
         <header className="space-y-2">
-          <h4 className="text-sm font-semibold uppercase tracking-wide text-violet-800">
+          <h4 className="text-sm font-semibold uppercase tracking-wide text-slate-700">
             Data Control Language (DCL)
           </h4>
-          <p className="text-sm leading-relaxed text-slate-700">
+          <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
             El <strong className="font-semibold text-slate-800">DCL</strong> agrupa las sentencias que
             gestionan <strong className="font-semibold text-slate-800">permisos</strong> (privilegios) sobre
             bases, tablas, vistas u otros objetos: quién puede leer, escribir o administrar. En MySQL suele
@@ -172,7 +172,7 @@ TRUNCATE TABLE cliente;
         </div>
       </div>
 
-      <div className="border-t border-indigo-200/70 pt-8">
+      <div className="border-t border-cyan-100/80 pt-8">
         <DdlMatchGame />
       </div>
     </div>

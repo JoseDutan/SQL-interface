@@ -13,14 +13,14 @@ function DmlSection({
   example: string;
 }) {
   return (
-    <section className="h-full rounded-lg border border-slate-200/90 bg-slate-50/80 p-5 shadow-sm">
+    <section className="h-full rounded-xl border border-slate-200/90 bg-white p-5 shadow-sm shadow-slate-200/40 dark:border-slate-600 dark:bg-slate-900/95 dark:shadow-none">
       <div className="flex flex-wrap items-baseline gap-2">
-        <span className="rounded-md bg-teal-600 px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide text-white">
+        <span className="rounded-md bg-cyan-600 px-2 py-0.5 font-mono text-xs font-semibold uppercase tracking-wide text-white">
           {command}
         </span>
-        <h5 className="text-base font-semibold text-slate-800">{title}</h5>
+        <h5 className="text-base font-semibold text-slate-800 dark:text-slate-100">{title}</h5>
       </div>
-      <p className="mt-3 text-sm leading-relaxed text-slate-600">{definition}</p>
+      <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">{definition}</p>
       <SqlWorkbenchBlock>{example}</SqlWorkbenchBlock>
     </section>
   );
@@ -28,12 +28,12 @@ function DmlSection({
 
 export function DmlTopicBody() {
   return (
-    <div className="mt-5 space-y-8 border-t border-slate-200/80 pt-6">
+    <div className="space-y-8">
       <header className="space-y-2">
-        <h4 className="text-sm font-semibold uppercase tracking-wide text-teal-800">
+        <h4 className="text-sm font-semibold uppercase tracking-wide text-cyan-800">
           Data Manipulation Language (DML)
         </h4>
-        <p className="text-sm leading-relaxed text-slate-700">
+        <p className="text-sm leading-relaxed text-slate-700 dark:text-slate-300">
           El <strong className="font-semibold text-slate-800">DML</strong> permite{' '}
           <strong className="font-semibold text-slate-800">añadir, modificar y borrar filas</strong> dentro
           de tablas ya existentes. Opera sobre los datos, no sobre la definición de la tabla (eso es DDL).
@@ -92,7 +92,7 @@ WHERE id_cliente = 99;
         />
       </div>
 
-      <div className="border-t border-slate-200/80 pt-8">
+      <div className="border-t border-cyan-100/80 pt-8">
         <DmlPracticeGame />
       </div>
     </div>

@@ -18,7 +18,13 @@ function App() {
   }
 
   if (!activeSection) {
-    return <DashboardPage sections={sections} onNavigate={navigateTo} />;
+    return (
+      <DashboardPage
+        sections={sections}
+        onNavigate={navigateTo}
+        onNavigateToHome={navigateToDashboard}
+      />
+    );
   }
 
   return (

@@ -1,44 +1,55 @@
 import type { Section, SectionId } from '../../domain/models/Section';
-import { AnimatedBackdrop } from '../components/AnimatedBackdrop';
 import { FadeInUp } from '../components/FadeInUp';
-import { GradientTitle } from '../components/GradientTitle';
+import { PageBackdrop } from '../components/PageBackdrop';
 import { SectionCard } from '../components/SectionCard';
+import { SiteHeader } from '../components/SiteHeader';
 
 interface DashboardPageProps {
   sections: Section[];
   onNavigate: (id: SectionId) => void;
+  onNavigateToHome: () => void;
 }
 
-export function DashboardPage({ sections, onNavigate }: DashboardPageProps) {
+export function DashboardPage({ sections, onNavigate, onNavigateToHome }: DashboardPageProps) {
   return (
-    <div className="relative flex min-h-screen items-center justify-center overflow-hidden bg-slate-50 px-8 py-8">
-      <AnimatedBackdrop />
+    <div className="relative flex min-h-screen flex-col dark:bg-slate-950">
+      <PageBackdrop />
+      <SiteHeader
+        variant="dashboard"
+        onBrandClick={onNavigateToHome}
+        sections={sections}
+        onNavigate={onNavigate}
+      />
 
-      <div className="relative z-10 flex w-full max-w-4xl flex-col items-center text-center">
-        <div className="mb-12">
-          <GradientTitle>SQL</GradientTitle>
-          <FadeInUp delayMs={180}>
-            <p className="mx-auto mt-4 max-w-2xl text-xl leading-relaxed text-slate-600">
-              Plataforma interactiva de aprendizaje de sentencias SQL para
-              estudiantes de 5to semestre universitario
-            </p>
+      <main className="relative z-10 flex flex-1 flex-col px-4 py-10 sm:px-6 sm:py-12 md:py-14">
+        <div className="mx-auto w-full max-w-6xl">
+          <div className="mb-10 text-center md:mb-14">
+            <FadeInUp delayMs={100}>
+              <h1 className="text-5xl font-extrabold tracking-tight text-cyan-600 dark:text-cyan-400 sm:text-6xl md:text-7xl">
+                SQL
+              </h1>
+            </FadeInUp>
+            <FadeInUp delayMs={200}>
+              <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg">
+                Plataforma interactiva de aprendizaje de sentencias SQL para estudiantes de 5to semestre
+                universitario.
+              </p>
+            </FadeInUp>
+          </div>
+
+          <div className="grid grid-cols-1 gap-6 sm:gap-7 md:grid-cols-3 md:gap-8">
+            {sections.map((section, index) => (
+              <FadeInUp key={section.id} delayMs={280 + index * 100}>
+                <SectionCard section={section} onNavigate={onNavigate} />
+              </FadeInUp>
+            ))}
+          </div>
+
+          <FadeInUp delayMs={280 + sections.length * 100 + 120} className="mt-12 text-center md:mt-16">
+            <p className="text-sm text-slate-500 dark:text-slate-400">Selecciona una sección para comenzar tu aprendizaje</p>
           </FadeInUp>
         </div>
-
-        <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-3">
-          {sections.map((section, index) => (
-            <FadeInUp key={section.id} delayMs={320 + index * 110}>
-              <SectionCard section={section} onNavigate={onNavigate} />
-            </FadeInUp>
-          ))}
-        </div>
-
-        <FadeInUp delayMs={320 + sections.length * 110 + 80} className="mt-16">
-          <p className="text-sm text-slate-400">
-            Selecciona una sección para comenzar tu aprendizaje
-          </p>
-        </FadeInUp>
-      </div>
+      </main>
     </div>
   );
 }

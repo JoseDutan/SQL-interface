@@ -22,16 +22,7 @@ const TOPICS: Topic[] = [
     sectionId: 'curso',
     title: 'Lenguaje de Consulta de Datos – Nivel Básico',
     description: 'DQL: SELECT, FROM, WHERE y fundamentos del listado de datos.',
-    content: `Data Query Language (DQL)
-SELECT
-FROM
-WHERE
-
-Comandos básicos del SELECT
-Comodín universal (*)
-Columnas específicas
-AS
-Operadores matemáticos (+, -, *, /)`,
+    content: '',
   },
   {
     id: 'c4',

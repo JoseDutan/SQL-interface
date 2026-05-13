@@ -68,13 +68,13 @@ function cmdButtonClass(cmd: DdlCmd, active: boolean, matched: boolean, wrong: b
     return `${base} border-rose-500 bg-gradient-to-br from-rose-50 to-orange-50 text-rose-900 shadow-rose-500/25 animate-[shake_0.35s_ease-in-out]`;
   }
   if (active) {
-    return `${base} scale-[1.03] border-indigo-500 bg-gradient-to-br from-indigo-100 via-violet-100 to-fuchsia-100 text-indigo-950 shadow-xl shadow-indigo-500/35 ring-2 ring-indigo-400/60`;
+    return `${base} scale-[1.03] border-cyan-500 bg-gradient-to-br from-cyan-100 via-sky-100 to-cyan-100 text-cyan-950 shadow-xl shadow-cyan-500/35 ring-2 ring-cyan-400/60`;
   }
   switch (cmd) {
     case 'CREATE':
-      return `${base} border-indigo-400/80 bg-gradient-to-br from-white to-indigo-50/90 text-indigo-900 shadow-md shadow-indigo-500/10 hover:border-indigo-500 hover:shadow-indigo-500/25`;
+      return `${base} border-cyan-400/80 bg-gradient-to-br from-white to-cyan-50/90 text-cyan-900 shadow-md shadow-cyan-500/10 hover:border-cyan-500 hover:shadow-cyan-500/25`;
     case 'ALTER':
-      return `${base} border-violet-400/80 bg-gradient-to-br from-white to-violet-50/90 text-violet-900 shadow-md shadow-violet-500/10 hover:border-violet-500 hover:shadow-violet-500/25`;
+      return `${base} border-sky-400/80 bg-gradient-to-br from-white to-sky-50/90 text-sky-900 shadow-md shadow-sky-500/10 hover:border-sky-500 hover:shadow-sky-500/25`;
     case 'DROP':
       return `${base} border-rose-400/80 bg-gradient-to-br from-white to-rose-50/90 text-rose-900 shadow-md shadow-rose-500/10 hover:border-rose-500 hover:shadow-rose-500/25`;
     case 'TRUNCATE':
@@ -185,32 +185,32 @@ export function DdlMatchGame() {
     const efficiency = attempts <= ideal ? 'perfecta' : attempts <= ideal + 2 ? 'muy buena' : 'mejorable';
 
     return (
-      <div className="relative overflow-hidden rounded-2xl border-2 border-indigo-400/50 bg-gradient-to-br from-indigo-950 via-slate-900 to-violet-950 p-6 shadow-[0_0_60px_-12px_rgba(129,140,248,0.55)] sm:p-10">
+      <div className="relative overflow-hidden rounded-2xl border-2 border-cyan-400/50 bg-gradient-to-br from-[#0a192f] via-[#0f172a] to-slate-900 p-6 shadow-[0_0_60px_-12px_rgba(8,145,178,0.45)] sm:p-10">
         {shakeKeyframes}
-        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-indigo-500/25 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-fuchsia-500/20 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-cyan-500/25 blur-3xl" aria-hidden />
+        <div className="pointer-events-none absolute -bottom-24 -left-16 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl" aria-hidden />
         <div className="relative text-center">
-          <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-indigo-500/40 to-violet-600/40 text-3xl shadow-lg shadow-indigo-500/30 backdrop-blur-sm" aria-hidden>
+          <span className="inline-flex h-16 w-16 items-center justify-center rounded-2xl border border-white/10 bg-gradient-to-br from-cyan-500/40 to-sky-600/40 text-3xl shadow-lg shadow-cyan-500/30 backdrop-blur-sm" aria-hidden>
             🔗
           </span>
-          <h3 className="mt-5 bg-gradient-to-r from-indigo-200 via-white to-fuchsia-200 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
+          <h3 className="mt-5 bg-gradient-to-r from-cyan-200 via-white to-cyan-200 bg-clip-text text-2xl font-extrabold tracking-tight text-transparent sm:text-3xl">
             ¡Tablero completado!
           </h3>
-          <p className="mt-2 text-sm font-medium text-indigo-200/95">Emparejamiento DDL sin errores de concepto</p>
+          <p className="mt-2 text-sm font-medium text-cyan-200/95">Emparejamiento DDL sin errores de concepto</p>
           <div className="mx-auto mt-6 max-w-sm rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-md">
-            <p className="text-xs uppercase tracking-widest text-indigo-300/80">Intentos totales</p>
+            <p className="text-xs uppercase tracking-widest text-cyan-300/80">Intentos totales</p>
             <p className="mt-1 font-mono text-3xl font-black tabular-nums text-white sm:text-4xl">
               {attempts}
-              <span className="text-lg font-semibold text-indigo-300/70"> / mín. {ideal}</span>
+              <span className="text-lg font-semibold text-cyan-300/70"> / mín. {ideal}</span>
             </p>
             <p className="mt-3 text-xs text-slate-400">
-              Eficiencia: <span className="font-semibold text-violet-300">{efficiency}</span>
+              Eficiencia: <span className="font-semibold text-sky-300">{efficiency}</span>
             </p>
           </div>
           <button
             type="button"
             onClick={reset}
-            className="mt-8 rounded-xl bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-600 bg-[length:200%_100%] px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-[0_10px_40px_-8px_rgba(139,92,246,0.55)] transition-[background-position,transform] duration-300 hover:bg-right hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-fuchsia-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 active:scale-[0.98]"
+            className="mt-8 rounded-xl bg-gradient-to-r from-cyan-500 via-sky-500 to-cyan-600 bg-[length:200%_100%] px-8 py-3.5 text-sm font-bold uppercase tracking-wide text-white shadow-[0_10px_40px_-8px_rgba(8,145,178,0.45)] transition-[background-position,transform] duration-300 hover:bg-right hover:brightness-110 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 active:scale-[0.98]"
           >
             Mezclar de nuevo
           </button>
@@ -220,34 +220,34 @@ export function DdlMatchGame() {
   }
 
   return (
-    <div className="relative overflow-hidden rounded-2xl border-2 border-indigo-400/45 bg-gradient-to-br from-indigo-500/20 via-fuchsia-500/15 to-violet-600/20 p-[2px] shadow-[0_24px_60px_-12px_rgba(99,102,241,0.35)]">
+    <div className="relative overflow-hidden rounded-2xl border-2 border-cyan-400/45 bg-gradient-to-br from-cyan-500/20 via-cyan-500/15 to-sky-600/20 p-[2px] shadow-[0_24px_60px_-12px_rgba(8,145,178,0.3)]">
       {shakeKeyframes}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(129,140,248,0.2),transparent)]" aria-hidden />
-      <div className="pointer-events-none absolute -right-24 top-1/3 h-56 w-56 rounded-full bg-violet-400/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute -left-16 bottom-0 h-44 w-44 rounded-full bg-indigo-400/15 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(34,211,238,0.18),transparent)]" aria-hidden />
+      <div className="pointer-events-none absolute -right-24 top-1/3 h-56 w-56 rounded-full bg-sky-400/20 blur-3xl" aria-hidden />
+      <div className="pointer-events-none absolute -left-16 bottom-0 h-44 w-44 rounded-full bg-cyan-400/15 blur-3xl" aria-hidden />
 
       <div className="relative rounded-[14px] bg-white/92 p-5 backdrop-blur-md sm:p-7">
         <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div className="space-y-2">
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-indigo-200/80 bg-gradient-to-r from-indigo-500/12 to-violet-500/12 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-indigo-800 shadow-sm">
+            <span className="inline-flex items-center gap-1.5 rounded-full border border-cyan-200/80 bg-gradient-to-r from-cyan-500/12 to-sky-500/12 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-cyan-800 shadow-sm">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-violet-400 opacity-50" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-indigo-600" />
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-50" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-cyan-600" />
               </span>
               Modo emparejar
             </span>
-            <h3 className="bg-gradient-to-r from-indigo-800 via-violet-700 to-fuchsia-700 bg-clip-text text-xl font-extrabold tracking-tight text-transparent sm:text-2xl">
+            <h3 className="bg-gradient-to-r from-cyan-800 via-sky-700 to-cyan-700 bg-clip-text text-xl font-extrabold tracking-tight text-transparent sm:text-2xl">
               Reto: emparejamiento DDL
             </h3>
             <p className="max-w-2xl text-xs leading-relaxed text-slate-600 sm:text-sm">
-              Enlaza cada <strong className="text-indigo-900">situación</strong> con su{' '}
-              <strong className="text-violet-900">verbo DDL</strong>. Puedes elegir primero la tarjeta o el comando.
+              Enlaza cada <strong className="text-cyan-900">situación</strong> con su{' '}
+              <strong className="text-sky-900">verbo DDL</strong>. Puedes elegir primero la tarjeta o el comando.
             </p>
           </div>
           <div className="flex flex-col gap-2 sm:flex-row lg:flex-col lg:items-end">
             <div className="flex items-center gap-3 rounded-xl border border-slate-700/20 bg-gradient-to-br from-slate-900 to-slate-800 px-4 py-2.5 text-white shadow-lg shadow-slate-900/30">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Pares</span>
-              <span className="font-mono text-xl font-bold tabular-nums text-indigo-300">
+              <span className="font-mono text-xl font-bold tabular-nums text-cyan-300">
                 {pairsDone}
                 <span className="text-slate-500">/</span>
                 {SCENARIOS.length}
@@ -264,10 +264,10 @@ export function DdlMatchGame() {
           </div>
         </div>
 
-        <div className="mt-5 overflow-hidden rounded-xl border border-indigo-200/60 bg-gradient-to-r from-indigo-50/90 via-cyan-50/40 to-violet-50/80 p-1 shadow-inner">
+        <div className="mt-5 overflow-hidden rounded-xl border border-cyan-200/60 bg-gradient-to-r from-cyan-50/90 via-cyan-50/40 to-sky-50/80 p-1 shadow-inner">
           <div className="rounded-lg border border-white/60 bg-white/70 px-4 py-3 backdrop-blur-sm">
-            <p className="text-[11px] font-semibold leading-relaxed text-indigo-950 sm:text-xs">
-              <span className="mr-1.5 rounded bg-indigo-600 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
+            <p className="text-[11px] font-semibold leading-relaxed text-cyan-950 sm:text-xs">
+              <span className="mr-1.5 rounded bg-cyan-600 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wide text-white">
                 Cómo jugar
               </span>
               Pulsa una situación y el comando que encaje (o al revés). Acierto → par en verde. Fallo → el comando tiembla;
@@ -279,9 +279,9 @@ export function DdlMatchGame() {
         <div className="mt-6 grid gap-8 lg:grid-cols-2">
           <div>
             <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-300 to-transparent" aria-hidden />
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-300 to-transparent" aria-hidden />
               Situaciones
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-indigo-300 to-transparent" aria-hidden />
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-cyan-300 to-transparent" aria-hidden />
             </p>
             <ul className="flex flex-col gap-3">
               {leftOrder.map((s, idx) => {
@@ -297,19 +297,19 @@ export function DdlMatchGame() {
                         matched
                           ? 'border-emerald-500 bg-gradient-to-br from-emerald-50 to-teal-50 text-emerald-900 shadow-md shadow-emerald-500/15'
                           : active
-                            ? 'border-indigo-500 bg-gradient-to-br from-indigo-50 via-white to-violet-50 shadow-xl shadow-indigo-500/25 ring-2 ring-indigo-400/50'
-                            : 'border-slate-200/90 bg-white shadow-md shadow-slate-200/40 hover:-translate-y-0.5 hover:border-indigo-400 hover:shadow-lg hover:shadow-indigo-500/15'
+                            ? 'border-cyan-500 bg-gradient-to-br from-cyan-50 via-white to-sky-50 shadow-xl shadow-cyan-500/25 ring-2 ring-cyan-400/50'
+                            : 'border-slate-200/90 bg-white shadow-md shadow-slate-200/40 hover:-translate-y-0.5 hover:border-cyan-400 hover:shadow-lg hover:shadow-cyan-500/15'
                       }`}
                     >
-                      <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-indigo-500 via-violet-500 to-fuchsia-500 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
+                      <span className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-cyan-500 via-sky-500 to-cyan-500 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden />
                       <div className="flex items-start gap-3">
                         <span
                           className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-xs font-black ${
                             matched
                               ? 'bg-emerald-600 text-white'
                               : active
-                                ? 'bg-gradient-to-br from-indigo-600 to-violet-600 text-white shadow-md'
-                                : 'bg-slate-100 text-slate-500 group-hover:bg-indigo-100 group-hover:text-indigo-800'
+                                ? 'bg-gradient-to-br from-cyan-600 to-sky-600 text-white shadow-md'
+                                : 'bg-slate-100 text-slate-500 group-hover:bg-cyan-100 group-hover:text-cyan-800'
                           }`}
                         >
                           {idx + 1}
@@ -333,9 +333,9 @@ export function DdlMatchGame() {
 
           <div>
             <p className="mb-3 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-slate-500">
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-violet-300 to-transparent" aria-hidden />
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-300 to-transparent" aria-hidden />
               Comandos DDL
-              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-violet-300 to-transparent" aria-hidden />
+              <span className="h-px flex-1 bg-gradient-to-r from-transparent via-sky-300 to-transparent" aria-hidden />
             </p>
             <ul className="flex flex-col gap-3">
               {rightOrder.map((cmd) => {
@@ -364,7 +364,7 @@ export function DdlMatchGame() {
 
         <div className="mt-6 flex flex-col gap-4 border-t border-slate-200/80 pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="max-w-xl text-[11px] leading-relaxed text-slate-600">
-            <span className="font-bold text-indigo-700">Tip:</span>{' '}
+            <span className="font-bold text-cyan-700">Tip:</span>{' '}
             <span className="rounded bg-slate-100 px-1 font-mono text-[10px] text-rose-800">DROP</span> quita el
             objeto del catálogo;{' '}
             <span className="rounded bg-slate-100 px-1 font-mono text-[10px] text-amber-900">TRUNCATE</span> vacía la
@@ -373,7 +373,7 @@ export function DdlMatchGame() {
           <button
             type="button"
             onClick={reset}
-            className="shrink-0 rounded-xl border-2 border-slate-300 bg-gradient-to-b from-white to-slate-50 px-4 py-2 text-xs font-bold text-slate-800 shadow-md transition hover:border-indigo-300 hover:shadow-indigo-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 active:scale-[0.98]"
+            className="shrink-0 rounded-xl border-2 border-slate-300 bg-gradient-to-b from-white to-slate-50 px-4 py-2 text-xs font-bold text-slate-800 shadow-md transition hover:border-cyan-300 hover:shadow-cyan-500/15 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 active:scale-[0.98]"
           >
             Reiniciar tablero
           </button>
