@@ -21,14 +21,14 @@ const TOPICS: Topic[] = [
   {
     id: 'c3',
     sectionId: 'curso',
-    title: 'Lenguaje de Consulta de Datos – Nivel Básico',
+    title: 'Lenguaje de Consulta de Datos',
     description: 'DQL: SELECT, FROM, WHERE y fundamentos del listado de datos.',
     content: '',
   },
   {
     id: 'c4',
     sectionId: 'curso',
-    title: 'Lenguaje de Consulta de Datos – Nivel Avanzado',
+    title: 'Lenguaje de Consulta de Datos',
     description: 'Extensión de DQL: orden, agrupación, límites y funciones en consultas.',
     content: `Extensión de DQL
 ORDER BY

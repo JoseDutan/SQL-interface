@@ -13,7 +13,7 @@ export function BrandMark({
   size = 'md',
   onClick,
   className = '',
-  'aria-label': ariaLabel = 'SQL Interface',
+  'aria-label': ariaLabel = 'Aprendiendo SQL',
 }: BrandMarkProps) {
   const iconPx = size === 'sm' ? 26 : 32;
   const textClass = size === 'sm' ? 'text-base' : 'text-lg sm:text-xl';
@@ -33,7 +33,7 @@ export function BrandMark({
         <ellipse cx="16" cy="25" rx="11" ry="4.5" fill="none" stroke="currentColor" strokeWidth="2" />
         <path d="M10 12h12M10 21h8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" opacity="0.5" />
       </svg>
-      <span className={`font-bold tracking-tight text-cyan-600 dark:text-cyan-400 ${textClass}`}>SQL Interface</span>
+      <span className={`font-bold tracking-tight text-cyan-600 dark:text-cyan-400 ${textClass}`}>Aprendiendo SQL</span>
     </>
   );
 

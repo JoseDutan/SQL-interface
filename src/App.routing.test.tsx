@@ -18,7 +18,7 @@ describe('rutas de la aplicación', () => {
   it('redirige secciones inválidas al panel de inicio', async () => {
     renderApp('/seccion-desconocida');
     expect(
-      await screen.findByText(/plataforma interactiva de aprendizaje de sentencias sql/i)
+      await screen.findByText(/Una manera diferente de aprender SQL/i)
     ).toBeInTheDocument();
   });
 
